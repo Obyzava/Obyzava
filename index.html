@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обучение | Анонимность | Создание сайтов</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0e0e0e;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            flex-direction: column;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Парраллаксовый эффект */
+        .parallax {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 255, 170, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            animation: pulse 3s infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Анимация для контента */
+        .container {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 255, 170, 0.5);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            z-index: 2;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Анимация для заголовка (Typing Effect) */
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #00ffaa;
+            text-shadow: 0 0 10px rgba(0, 255, 170, 0.8), 0 0 20px rgba(0, 255, 170, 0.6);
+            animation: typing 2s steps(30) 1s 1 normal both;
+        }
+
+        @keyframes typing {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        /* Кнопки с анимацией */
+        .btn {
+            display: block;
+            background: #0088cc;
+            color: white;
+            padding: 12px;
+            margin: 10px 0;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            background: #0077b5;
+            box-shadow: 0 0 15px rgba(0, 255, 170, 0.6);
+            transform: translateY(-3px);
+            border: 2px solid #00ffaa;
+        }
+
+        .btn:hover::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(0, 255, 170, 0.3);
+            transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s;
+            border-radius: 50%;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn:hover:before {
+            width: 0;
+            height: 0;
+            top: 50%;
+            left: 50%;
+        }
+
+        /* Логотип с анимацией */
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg') no-repeat center/cover;
+            margin: 0 auto 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 170, 0.8);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .logo:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 170, 1);
+        }
+
+        p {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="parallax"></div>
+    <div class="container">
+        <div class="logo"></div>
+        <h1>‼️ Добро пожаловать! ‼️</h1>
+        <p>Мы научим тебя создавать сайты, ботов, работать с Termux и многое другое!</p>
+        <a href="https://t.me/npoxogka" class="btn">Перейти в Telegram</a>
+        <a href="https://t.me/IWKEJDOBOT" class="btn">Поддержка</a>
+        <a href="https://t.me/Hilpshsjdkbot" class="btn">Задать вопрос</a>
+    </div>
+</body>
+</html>
