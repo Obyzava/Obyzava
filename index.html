@@ -9,7 +9,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0e0e0e;
+            background: linear-gradient(135deg, #0e0e0e, #1e1e1e);
             color: #fff;
             display: flex;
             justify-content: center;
@@ -17,26 +17,20 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
-            position: relative;
             flex-direction: column;
             animation: fadeIn 1.5s ease-out;
+            position: relative;
         }
 
-        /* Парраллаксовый эффект */
         .parallax {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, rgba(0, 255, 170, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
-            animation: pulse 3s infinite alternate;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 255, 170, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            transition: background-position 0.1s ease-out;
             z-index: 1;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: scale(1); }
-            100% { opacity: 0.6; transform: scale(1.1); }
         }
 
         @keyframes fadeIn {
@@ -44,7 +38,6 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Анимация для контента */
         .container {
             background: #1e1e1e;
             padding: 20px;
@@ -55,32 +48,31 @@
             max-width: 400px;
             position: relative;
             z-index: 2;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease-out;
-            transition: transform 0.3s ease;
+            animation: fadeIn 1s ease-out;
         }
 
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Анимация для заголовка (Typing Effect) */
         h1 {
             font-size: 22px;
             font-weight: 600;
             margin-bottom: 10px;
             color: #00ffaa;
-            text-shadow: 0 0 10px rgba(0, 255, 170, 0.8), 0 0 20px rgba(0, 255, 170, 0.6);
-            animation: typing 2s steps(30) 1s 1 normal both;
+            text-shadow: 0 0 10px rgba(0, 255, 170, 0.8);
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #00ffaa;
+            width: 0;
+            animation: typing 2s steps(20, end) forwards, blink 0.7s infinite;
         }
 
         @keyframes typing {
-            0% { width: 0; }
-            100% { width: 100%; }
+            from { width: 0; }
+            to { width: 100%; }
         }
 
-        /* Кнопки с анимацией */
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
         .btn {
             display: block;
             background: #0088cc;
@@ -90,10 +82,9 @@
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 2px solid transparent;
+            position: relative;
         }
 
         .btn:hover {
@@ -103,28 +94,6 @@
             border: 2px solid #00ffaa;
         }
 
-        .btn:hover::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: rgba(0, 255, 170, 0.3);
-            transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s;
-            border-radius: 50%;
-            z-index: 0;
-            transform: translate(-50%, -50%);
-        }
-
-        .btn:hover:before {
-            width: 0;
-            height: 0;
-            top: 50%;
-            left: 50%;
-        }
-
-        /* Логотип с анимацией */
         .logo {
             width: 80px;
             height: 80px;
@@ -144,7 +113,6 @@
             color: #ccc;
             margin-bottom: 20px;
         }
-
     </style>
 </head>
 <body>
@@ -157,5 +125,12 @@
         <a href="https://t.me/IWKEJDOBOT" class="btn">Поддержка</a>
         <a href="https://t.me/Hilpshsjdkbot" class="btn">Задать вопрос</a>
     </div>
+    
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            document.documentElement.style.setProperty('--x', `${e.clientX}px`);
+            document.documentElement.style.setProperty('--y', `${e.clientY}px`);
+        });
+    </script>
 </body>
 </html>
